@@ -219,7 +219,7 @@
                                     <imageReference key="image" image="clock" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="showCalculationsList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UAC-I4-G7J"/>
+                                    <segue destination="cLC-yQ-Euv" kind="show" identifier="CALCULATIONS_LIST" id="PdU-6x-PLf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -312,7 +312,7 @@
             </objects>
             <point key="canvasLocation" x="973.28244274809151" y="-2.1126760563380285"/>
         </scene>
-        <!--История-->
+        <!--Прошлые вычисления-->
         <scene sceneID="48M-7g-VRy">
             <objects>
                 <viewController storyboardIdentifier="CalculationsListViewController" id="cLC-yQ-Euv" customClass="CalculationsListViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -326,14 +326,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N10-KQ-pdU">
-                                <rect key="frame" x="166.66666666666666" y="551.33333333333337" width="60" height="30"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Закрыть"/>
-                                <connections>
-                                    <action selector="dismissVC:" destination="cLC-yQ-Euv" eventType="touchUpInside" id="RFt-iJ-Clp"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Результат" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nF-qG-TMd">
                                 <rect key="frame" x="157" y="368.33333333333331" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -344,15 +336,13 @@
                         <viewLayoutGuide key="safeArea" id="otV-rn-7a1"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="N10-KQ-pdU" firstAttribute="top" secondItem="bBb-60-HhQ" secondAttribute="bottom" constant="125.33333333333331" id="9fx-FV-YgZ"/>
                             <constraint firstItem="bBb-60-HhQ" firstAttribute="top" secondItem="9nF-qG-TMd" secondAttribute="bottom" constant="36.666666666666686" id="IxZ-1l-cr1"/>
                             <constraint firstItem="bBb-60-HhQ" firstAttribute="centerX" secondItem="heg-lT-FV8" secondAttribute="centerX" id="UeE-Fx-gVP"/>
                             <constraint firstItem="9nF-qG-TMd" firstAttribute="centerX" secondItem="heg-lT-FV8" secondAttribute="centerX" id="Wfp-0A-x3r"/>
-                            <constraint firstItem="N10-KQ-pdU" firstAttribute="centerX" secondItem="heg-lT-FV8" secondAttribute="centerX" id="lLD-O9-6DV"/>
                             <constraint firstItem="bBb-60-HhQ" firstAttribute="centerY" secondItem="heg-lT-FV8" secondAttribute="centerY" id="xCc-Za-791"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="История" id="Axf-4T-WoP"/>
+                    <navigationItem key="navigationItem" title="Прошлые вычисления" style="editor" id="Axf-4T-WoP"/>
                     <connections>
                         <outlet property="calculationLabel" destination="bBb-60-HhQ" id="EUc-mv-P0c"/>
                     </connections>
@@ -383,7 +373,7 @@
     <resources>
         <image name="clock" catalog="system" width="128" height="123"/>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

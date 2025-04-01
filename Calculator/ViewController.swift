@@ -26,7 +26,7 @@ enum Operation: String {
             return number1 - number2
             
         case .multiply:
-            return number1 * number2
+            return number1 * number2 // To realize operation sequence: 2 + 2 * 2
             
         case .divide:
             if number2 == 0 {
@@ -43,6 +43,7 @@ enum CalculationHistoryItem {
 }
 
 class ViewController: UIViewController {
+    var historyIsEmpty: Bool = true
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         guard let buttonText = sender.currentTitle else {return}
@@ -89,6 +90,7 @@ class ViewController: UIViewController {
         else {return}
         
         calculationHistory.append(.number(labelNumber))
+        historyIsEmpty = false
         
         do {
         let result = try calculate()
@@ -96,8 +98,10 @@ class ViewController: UIViewController {
         } catch {
             label.text = "Ошибка"
         }
-            
+        
+        
         calculationHistory.removeAll()
+        
     }
     
     @IBOutlet weak var label: UILabel!
@@ -121,19 +125,15 @@ class ViewController: UIViewController {
         resetLabelText()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    @IBAction func showCalculationsList(_ sender: Any) {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let calculationsListVC = sb.instantiateViewController(identifier: "CalculationsListViewController")
-        if let vc = calculationsListVC as? CalculationsListViewController {
-            vc.result = label.text
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CALCULATIONS_LIST" {
+            if let calculationsListVC = segue.destination as? CalculationsListViewController {
+                if historyIsEmpty == false {
+                    calculationsListVC.result = label.text} else {
+                        calculationsListVC.result = "NoData"
+                }
+            }
         }
-        
-        navigationController?.pushViewController(calculationsListVC, animated: true)
     }
     
     func calculate() throws -> Double {
